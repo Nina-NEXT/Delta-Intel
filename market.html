@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>交易行行情 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html">新手入门</a>
+      <a href="maps.html">地图攻略</a>
+      <a href="weapons.html">武器数据库</a>
+      <a href="operators.html">干员图鉴</a>
+      <a href="market.html" class="active">交易行行情</a>
+      <a href="season.html">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>交易行行情</div>
+    <h1 class="page-title">交易行行情</h1>
+    <p class="page-sub">高价值物资参考价，用于估算搬砖路线收益。实际成交价受供需影响随时波动，仅供参考，交易前请以游戏内交易行实时价格为准。</p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>高价值物资参考价</h2>
+      <span class="idx">MARKET // 01</span>
+    </div>
+    <table class="datatable">
+      <thead>
+        <tr><th>物资名称</th><th>参考价（哈夫币）</th><th>获取难度</th><th>近期趋势</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>非洲之星</td><td>800万+</td><td>极高</td><td class="price-up">↑ 上涨</td></tr>
+        <tr><td>曼德尔砖</td><td>200-500万 / 块</td><td>高</td><td class="price-down">↓ 回落</td></tr>
+        <tr><td>袖珍随身听</td><td>参考官方回收价</td><td>中（数量多，易被低价抛售）</td><td>— 持平</td></tr>
+      </tbody>
+    </table>
+    <div class="tier-note">* 数据来源社区整理，仅作方向性参考，实时价格请以游戏内交易行为准。</div>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="section-head">
+      <h2>搬砖思路参考</h2>
+      <span class="idx">FLIPPING // 02</span>
+    </div>
+    <div class="callout">
+      <b>低买高卖：</b>交易行同一物资常有玩家挂出低于官方回收价的价格（比如急于出手清仓），可以低价收购后以官方回收价卖给NPC商人赚取差价，风险接近于零，但收益依赖你能不能盯到低价挂单。
+    </div>
+    <div class="callout" style="margin-top:14px;">
+      <b>局内高价值点位路线：</b>零号大坝的水泥厂地下金库必定刷新保险箱，大坝22号协议箱固定产出金条，长弓溪谷鸟窝藏有隐藏紫色材料——参考路线"水泥厂→军营→主楼→撤离点"，一趟约20分钟，单趟收益可达数十万到百万哈夫币不等，具体以实际搜刮和撤离成功率为准。
+    </div>
+    <div class="callout" style="margin-top:14px;">
+      <b>注意：</b>搬砖收益的前提是能成功撤离——如果本局被淘汰，搜到的战利品会清空，等于白忙一场。跑刀避战策略往往比正面刚枪更适合稳定搬砖。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+</script>
+
+</body>
+</html>

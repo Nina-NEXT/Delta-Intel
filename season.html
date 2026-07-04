@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赛季通行证 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .pass-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  @media (max-width:800px){ .pass-grid{ grid-template-columns:1fr; } }
+  .pass-card{ display:flex; flex-direction:column; gap:12px; }
+  .pass-card .pname{ font-size:18px; font-weight:900; }
+  .pass-card .pprice{ font-family:var(--mono); color:var(--amber); font-size:22px; }
+  .pass-card ul{ padding-left:18px; color:var(--text-dim); font-size:13px; line-height:1.8; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html">新手入门</a>
+      <a href="maps.html">地图攻略</a>
+      <a href="weapons.html">武器数据库</a>
+      <a href="operators.html">干员图鉴</a>
+      <a href="market.html">交易行行情</a>
+      <a href="season.html" class="active">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>赛季通行证</div>
+    <h1 class="page-title">S07「裂变」赛季通行证</h1>
+    <p class="page-sub">通行证持续时长与赛季周期一致，一般为3个月，完成任务提升等级即可解锁对应奖励。分普通、进阶版、豪华版三档，按需购买。</p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>版本对比</h2>
+      <span class="idx">PASS TIERS // 01</span>
+    </div>
+    <div class="pass-grid">
+      <div class="hud-card pass-card">
+        <div class="pname">普通版</div>
+        <div class="pprice">免费</div>
+        <ul>
+          <li>基础任务与等级奖励</li>
+          <li>部分赛季材料/道具</li>
+          <li>无专属外观类奖励</li>
+        </ul>
+      </div>
+      <div class="hud-card pass-card">
+        <div class="pname">进阶版</div>
+        <div class="pprice">付费</div>
+        <ul>
+          <li>解锁全部等级奖励线</li>
+          <li>额外通行证经验加成</li>
+          <li>包含部分赛季限定外观</li>
+        </ul>
+      </div>
+      <div class="hud-card pass-card">
+        <div class="pname">豪华版</div>
+        <div class="pprice">付费（含即时等级）</div>
+        <ul>
+          <li>购买即获得若干等级直升</li>
+          <li>全部专属外观与稀有材料</li>
+          <li>适合想快速拿满奖励的玩家</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="section-head">
+      <h2>本赛季主题内容</h2>
+      <span class="idx">SEASON THEME // 02</span>
+    </div>
+    <div class="callout">
+      <b>「裂变」赛季新增内容：</b>新增低温系干员技能体系——液氮标记失温进度、冷罐持续冰冻区域并可封锁门体、震撼弹干扰视野、转轮式冷凝榴弹发射器等一系列冰系战术道具，为战场增加了新的控制手段。
+    </div>
+    <div class="callout" style="margin-top:14px;">
+      <b>剧情主线：</b>本赛季剧情围绕哈夫克秘密能源基地展开的阴谋调查推进，核电站命运牵动全局，玩家需要在任务中逐步揭开真相。
+    </div>
+    <div class="tier-note" style="margin-top:14px;">* 赛季内容会随官方更新调整，具体任务列表与奖励详情请以游戏内公告为准，本页会持续跟进补充。</div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+</script>
+
+</body>
+</html>

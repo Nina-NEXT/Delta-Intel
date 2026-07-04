@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>干员图鉴 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .op-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  @media (max-width:800px){ .op-grid{ grid-template-columns:1fr; } }
+  .op-detail{ display:flex; flex-direction:column; gap:10px; }
+  .op-detail h3{ font-size:19px; }
+  .skill-row{ display:flex; gap:10px; font-size:13px; color:var(--text-dim); }
+  .skill-row b{ color:var(--text); flex:none; width:76px; font-family:var(--mono); font-size:11px; letter-spacing:1px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html">新手入门</a>
+      <a href="maps.html">地图攻略</a>
+      <a href="weapons.html">武器数据库</a>
+      <a href="operators.html" class="active">干员图鉴</a>
+      <a href="market.html">交易行行情</a>
+      <a href="season.html">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>干员图鉴</div>
+    <h1 class="page-title">干员图鉴</h1>
+    <p class="page-sub">四大定位各司其职，新手不必纠结"强不强"，先选一个技能直觉、容易上手的定位，跑熟地图和撤离节奏比研究阵容更重要。</p>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="section-head">
+      <h2>定位详解</h2>
+      <span class="idx">OPERATORS // 01</span>
+    </div>
+    <div class="op-grid">
+      <div class="hud-card op-detail role-recon">
+        <div class="role-tag">侦察 RECON</div>
+        <h3>信息优势型</h3>
+        <p style="font-size:13.5px; color:var(--text-dim);">通过标记敌人位置、开图侦察为团队提供决策依据，适合喜欢"先手情报"打法、不追求正面对枪的玩家。</p>
+        <div class="skill-row"><b>定位强项</b><span>标点、侦查、后期苟活撤离</span></div>
+        <div class="skill-row"><b>适合玩法</b><span>跑刀、组队指挥位</span></div>
+      </div>
+      <div class="hud-card op-detail role-assault">
+        <div class="role-tag">突击 ASSAULT</div>
+        <h3>正面输出型</h3>
+        <p style="font-size:13.5px; color:var(--text-dim);">强化枪械伤害或突破能力，是猛攻打法的主力位，适合枪法自信、喜欢主动进攻的玩家。</p>
+        <div class="skill-row"><b>定位强项</b><span>正面火力、突破、舔包</span></div>
+        <div class="skill-row"><b>适合玩法</b><span>猛攻、团队突破手</span></div>
+      </div>
+      <div class="hud-card op-detail role-support">
+        <div class="role-tag">支援 SUPPORT</div>
+        <h3>团队增益型</h3>
+        <p style="font-size:13.5px; color:var(--text-dim);">提供治疗、护盾或战场控制类技能，组队时容错率显著提高，适合喜欢照顾队友、打团队配合的玩家。</p>
+        <div class="skill-row"><b>定位强项</b><span>治疗、增益、控场</span></div>
+        <div class="skill-row"><b>适合玩法</b><span>组队优先，单排收益有限</span></div>
+      </div>
+      <div class="hud-card op-detail role-engineer">
+        <div class="role-tag">工程 ENGINEER</div>
+        <h3>战场布置型</h3>
+        <p style="font-size:13.5px; color:var(--text-dim);">擅长布设防御工事、维修载具或制造战术道具，打法偏稳健，适合喜欢"谋定后动"节奏的玩家。</p>
+        <div class="skill-row"><b>定位强项</b><span>防御布置、载具维护</span></div>
+        <div class="skill-row"><b>适合玩法</b><span>阵地防守、长期驻守点位</span></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      <b>选择建议：</b>单人跑刀推荐侦察（信息优势能帮你提前规避战斗），组队作战推荐至少带一个支援位保证团队容错率。具体干员技能和出场率数据后续持续补充。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+</script>
+
+</body>
+</html>

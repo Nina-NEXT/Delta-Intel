@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新手入门指南 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .steps{ counter-reset:step; display:flex; flex-direction:column; gap:0; }
+  .step{ display:grid; grid-template-columns:64px 1fr; gap:20px; padding:28px 0; border-bottom:1px solid var(--line); }
+  .step:last-child{ border-bottom:none; }
+  .step-num{ font-family:var(--mono); font-size:28px; color:var(--line-bright); font-weight:700; }
+  .step h3{ font-size:18px; margin-bottom:8px; }
+  .step p{ color:var(--text-dim); font-size:14px; line-height:1.75; }
+  .compare{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:700px){ .compare{ grid-template-columns:1fr; } }
+  .compare-card{ border-radius:2px; }
+  .compare-card h4{ font-size:16px; margin-bottom:10px; }
+  .compare-card ul{ padding-left:18px; color:var(--text-dim); font-size:13.5px; line-height:1.8; }
+  .role-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  @media (max-width:900px){ .role-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .role-grid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html" class="active">新手入门</a>
+      <a href="maps.html">地图攻略</a>
+      <a href="weapons.html">武器数据库</a>
+      <a href="operators.html">干员图鉴</a>
+      <a href="market.html">交易行行情</a>
+      <a href="season.html">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>新手入门</div>
+    <h1 class="page-title">新手入门指南</h1>
+    <p class="page-sub">三角洲行动核心是"搜打撤"——搜索物资、战斗、撤离变现，和传统吃鸡的"跑毒圈杀敌"完全不是一个思路。这份指南帮你 10 分钟搞懂基本逻辑，少走弯路。</p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>入门六步</h2>
+      <span class="idx">STEPS // 01</span>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div>
+          <h3>先分清两大模式</h3>
+          <p>「烽火地带」（危险行动）是搜打撤核心模式：单人/组队进入地图搜刮物资，成功撤离才算到手，中途阵亡则装备清空。「全面战场」则是大规模对抗模式，更接近传统战场玩法，团队推点、载具作战。新手建议先从烽火地带的低难度地图开始熟悉手感。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div>
+          <h3>选对干员定位</h3>
+          <p>干员分侦察、突击、支援、工程四种定位，各自有主动/被动技能。新手不用纠结"强不强"，先选一个技能简单直接、容错率高的定位上手，熟悉节奏后再研究组合搭配。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div>
+          <h3>装备"够用就行"，别一上来就顶配</h3>
+          <p>好装备一套下来上百万哈夫币，新手打一局收益往往覆盖不了，一旦阵亡就是巨亏。前期用便宜、可改装的武器练手感和地图，等对撤离流程和战斗节奏有把握了，再考虑投入高价值装备。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div>
+          <h3>明确这局的目标：跑刀还是猛攻</h3>
+          <p>跑刀：以搜索、避战为主，稳定搬砖攒钱，风险低但爽感也低。猛攻：主动寻找战斗、舔包获利，爽感强但对枪法和游戏理解要求高，新手上来就打猛攻容易亏到破产。建议新手先练跑刀思路，等资金和心态都稳了再尝试猛攻。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div>
+          <h3>记住撤离点的几种类型</h3>
+          <p>常规撤离点全程开放；概率撤离点随机开放/关闭；条件撤离点需要满足特定条件（丢包或限重）；电梯撤离点要先完成拉闸等操作；付费撤离点则需要在局内任务中获得的哈夫币支付。开局前先规划好撤离路线，别打到一半发现无路可退。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">06</div>
+        <div>
+          <h3>善用地图上的载具和道具</h3>
+          <p>全地形车等载具能大幅提升转移和撤离效率，后座乘客还能持械还击。合理使用载具、掩体和投掷物，往往比正面硬拼更能提高生存率。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>跑刀 vs 猛攻：怎么选</h2>
+      <span class="idx">PLAYSTYLE // 02</span>
+    </div>
+    <div class="compare">
+      <div class="hud-card compare-card">
+        <h4 style="color:var(--green);">跑刀（推荐新手）</h4>
+        <ul>
+          <li>核心是搜索与避战，遇敌优先脱离</li>
+          <li>用低成本、以小博大的武器，亏得起</li>
+          <li>收益稳定但爽感偏低，适合攒本金</li>
+          <li>撤离成功率高，适合练手感和地图熟悉度</li>
+        </ul>
+      </div>
+      <div class="hud-card compare-card">
+        <h4 style="color:var(--red);">猛攻</h4>
+        <ul>
+          <li>主动寻敌、舔包获利，战斗强度高</li>
+          <li>需要T0级武器和熟练枪法，投入成本高</li>
+          <li>高风险高回报，打不过容易巨亏战损</li>
+          <li>适合枪法自信、心态稳定的进阶玩家</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="section-head">
+      <h2>四大干员定位速览</h2>
+      <span class="idx">ROLES // 03</span>
+      <a class="more" href="operators.html">查看完整干员图鉴 →</a>
+    </div>
+    <div class="role-grid">
+      <div class="hud-card op-card role-recon">
+        <div class="role-tag">侦察</div>
+        <h3 style="font-size:16px;">RECON</h3>
+        <p style="color:var(--text-dim); font-size:13px;">负责侦察敌情、标记位置，适合喜欢信息优势打法的玩家。</p>
+      </div>
+      <div class="hud-card op-card role-assault">
+        <div class="role-tag">突击</div>
+        <h3 style="font-size:16px;">ASSAULT</h3>
+        <p style="color:var(--text-dim); font-size:13px;">强调正面输出和突破能力，猛攻玩法的主力位。</p>
+      </div>
+      <div class="hud-card op-card role-support">
+        <div class="role-tag">支援</div>
+        <h3 style="font-size:16px;">SUPPORT</h3>
+        <p style="color:var(--text-dim); font-size:13px;">提供团队增益、治疗或战场控制，组队时容错率更高。</p>
+      </div>
+      <div class="hud-card op-card role-engineer">
+        <div class="role-tag">工程</div>
+        <h3 style="font-size:16px;">ENGINEER</h3>
+        <p style="color:var(--text-dim); font-size:13px;">擅长布设装置、载具或防御工事，节奏偏稳健。</p>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px;">
+      <b>小贴士：</b>新手前几局不用追求"强势阵容"，先选一个操作简单、技能直觉的干员，把地图跑熟、把撤离流程走顺，比研究阵容搭配更重要。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+</script>
+
+</body>
+</html>

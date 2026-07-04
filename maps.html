@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地图攻略 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .map-layout{ display:grid; grid-template-columns:1fr 320px; gap:28px; }
+  @media (max-width:900px){ .map-layout{ grid-template-columns:1fr; } }
+  .map-visual{ aspect-ratio:16/10; background:
+      repeating-linear-gradient(45deg, rgba(126,168,84,0.05) 0 2px, transparent 2px 40px),
+      var(--bg-panel);
+    border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+    color:var(--text-dim); font-family:var(--mono); font-size:13px; text-align:center; padding:20px;
+  }
+  .zone-list{ display:flex; flex-direction:column; gap:10px; }
+  .zone-item{ display:flex; justify-content:space-between; align-items:center; padding:10px 14px; background:var(--bg-panel); border:1px solid var(--line); font-size:13.5px; }
+  .zone-item .name{ display:flex; align-items:center; gap:8px; }
+  .zone-item .dot{ width:8px; height:8px; border-radius:50%; flex:none; }
+  .zone-item .lvl{ font-family:var(--mono); font-size:11px; color:var(--text-dim); }
+  .dot.high{ background:var(--red); }
+  .dot.mid{ background:var(--amber); }
+  .dot.low{ background:var(--green); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html">新手入门</a>
+      <a href="maps.html" class="active">地图攻略</a>
+      <a href="weapons.html">武器数据库</a>
+      <a href="operators.html">干员图鉴</a>
+      <a href="market.html">交易行行情</a>
+      <a href="season.html">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>地图攻略</div>
+    <h1 class="page-title">地图攻略</h1>
+    <p class="page-sub">五张烽火地带地图的出生点、核心资源区、撤离点参考。红点为高价值/高竞争区域，先了解地图结构再决定跑刀路线还是正面刚枪。</p>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="tabbar" id="tabbar">
+      <button class="tabbtn active" data-tab="badam">零号大坝</button>
+      <button class="tabbtn" data-tab="changgong">长弓溪谷</button>
+      <button class="tabbtn" data-tab="baxishi">巴克什</button>
+      <button class="tabbtn" data-tab="hangtian">航天基地</button>
+      <button class="tabbtn" data-tab="chaoxi">潮汐监狱</button>
+    </div>
+
+    <!-- 零号大坝 -->
+    <div class="tabpanel active" id="badam">
+      <div class="map-layout">
+        <div>
+          <div class="map-visual">地图示意图占位<br>（可替换为实拍/标点地图图片）</div>
+          <div class="callout" style="margin-top:16px;">
+            <b>路线建议：</b>行政辖区资源最丰富但竞争也最激烈，新手/跑刀玩家可以先从左侧军营、水泥厂区域练手，右侧变电站与游客中心相对安全。全图共 14 个出生点，六队降落，靠近行政辖区的出生点默认更容易遭遇早期冲突。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:15px; margin-bottom:14px;">核心区域强度</h3>
+          <div class="zone-list">
+            <div class="zone-item"><span class="name"><span class="dot high"></span>行政辖区</span><span class="lvl">资源最丰富 · 竞争激烈</span></div>
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>军营</span><span class="lvl">中等资源</span></div>
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>水泥厂</span><span class="lvl">地下金库保险箱必刷</span></div>
+            <div class="zone-item"><span class="name"><span class="dot low"></span>变电站</span><span class="lvl">相对安全</span></div>
+            <div class="zone-item"><span class="name"><span class="dot low"></span>游客中心</span><span class="lvl">相对安全</span></div>
+          </div>
+          <h3 style="font-size:15px; margin:20px 0 14px;">撤离点类型</h3>
+          <div class="kv-list" style="grid-template-columns:1fr;">
+            <div class="kv-item"><span class="k">常规撤离点</span><span class="v">全程开放</span></div>
+            <div class="kv-item"><span class="k">概率撤离点</span><span class="v">随机开放</span></div>
+            <div class="kv-item"><span class="k">条件撤离点</span><span class="v">丢包 / 限重</span></div>
+            <div class="kv-item"><span class="k">电梯撤离点</span><span class="v">需先拉闸</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 长弓溪谷 -->
+    <div class="tabpanel" id="changgong">
+      <div class="map-layout">
+        <div>
+          <div class="map-visual">地图示意图占位</div>
+          <div class="callout" style="margin-top:16px;">
+            <b>路线建议：</b>地图整体难度中等，适合新手过渡练习。鸟窝点位藏有隐藏紫色材料，值得绕路一探，但注意点位相对固定，容易被熟悉地图的老玩家蹲守。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:15px; margin-bottom:14px;">核心区域强度</h3>
+          <div class="zone-list">
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>鸟窝</span><span class="lvl">隐藏紫料点位</span></div>
+            <div class="zone-item"><span class="name"><span class="dot low"></span>溪谷腹地</span><span class="lvl">整体难度中等</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 巴克什 -->
+    <div class="tabpanel" id="baxishi">
+      <div class="map-layout">
+        <div>
+          <div class="map-visual">地图示意图占位</div>
+          <div class="callout" style="margin-top:16px;">
+            <b>路线建议：</b>地形开阔，中远距离交火较多，建议携带倍镜武器。烽火纪念杯活动点位刷新位置相对固定，活动期间是绕路刷分的好去处。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:15px; margin-bottom:14px;">核心区域强度</h3>
+          <div class="zone-list">
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>烽火纪念杯点位</span><span class="lvl">活动期定点刷新</span></div>
+            <div class="zone-item"><span class="name"><span class="dot low"></span>开阔地带</span><span class="lvl">远距离交火为主</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 航天基地 -->
+    <div class="tabpanel" id="hangtian">
+      <div class="map-layout">
+        <div>
+          <div class="map-visual">地图示意图占位</div>
+          <div class="callout" style="margin-top:16px;">
+            <b>路线建议：</b>科技类高价值物资集中，室内近距离遭遇战偏多，建议携带霰弹枪或短突击步枪应对室内战。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:15px; margin-bottom:14px;">核心区域强度</h3>
+          <div class="zone-list">
+            <div class="zone-item"><span class="name"><span class="dot high"></span>核心实验室</span><span class="lvl">高价值科技物资</span></div>
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>室内区域</span><span class="lvl">近战遭遇多</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 潮汐监狱 -->
+    <div class="tabpanel" id="chaoxi">
+      <div class="map-layout">
+        <div>
+          <div class="map-visual">地图示意图占位</div>
+          <div class="callout" style="margin-top:16px;">
+            <b>路线建议：</b>空间狭窄、走廊多，近战武器和投掷物优先级更高。复活点位设计较特殊，团队作战时注意集火复活点周边。
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:15px; margin-bottom:14px;">核心区域强度</h3>
+          <div class="zone-list">
+            <div class="zone-item"><span class="name"><span class="dot high"></span>复活点周边</span><span class="lvl">团队交战热点</span></div>
+            <div class="zone-item"><span class="name"><span class="dot mid"></span>狭窄走廊</span><span class="lvl">近战优先</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+
+  // tab switching
+  const tabbtns = document.querySelectorAll('.tabbtn');
+  tabbtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tabbtn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tabpanel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+      history.replaceState(null, '', '#' + btn.dataset.tab);
+    });
+  });
+  // open correct tab if URL has hash
+  const hash = location.hash.replace('#','');
+  if(hash){
+    const target = document.querySelector(`.tabbtn[data-tab="${hash}"]`);
+    if(target) target.click();
+  }
+</script>
+
+</body>
+</html>

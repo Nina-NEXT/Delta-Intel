@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>武器数据库 · 三角洲情报站</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .weapon-card{ display:flex; flex-direction:column; gap:10px; }
+  .weapon-card .wname{ font-size:16px; font-weight:700; }
+  .weapon-card .wmeta{ font-family:var(--mono); font-size:11px; color:var(--text-dim); }
+  .code-box{ background:var(--bg-panel-2); border:1px solid var(--line-bright); padding:10px 12px; font-family:var(--mono); font-size:12px; color:var(--green); display:flex; justify-content:space-between; align-items:center; gap:10px; }
+  .copy-btn{ background:none; border:1px solid var(--line-bright); color:var(--text-dim); font-family:var(--mono); font-size:11px; padding:4px 8px; cursor:pointer; border-radius:2px; flex:none; }
+  .copy-btn:hover{ color:var(--amber); border-color:var(--amber); }
+  .wgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  @media (max-width:900px){ .wgrid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .wgrid{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>三角洲情报站<small>DELTA&nbsp;INTEL</small></a>
+    <nav class="mainnav">
+      <a href="index.html">首页</a>
+      <a href="guide.html">新手入门</a>
+      <a href="maps.html">地图攻略</a>
+      <a href="weapons.html" class="active">武器数据库</a>
+      <a href="operators.html">干员图鉴</a>
+      <a href="market.html">交易行行情</a>
+      <a href="season.html">赛季通行证</a>
+    </nav>
+    <div class="searchbox">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" placeholder="搜索武器 / 地图 / 密码...">
+    </div>
+  </div>
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="ticker-label">今日密码</div>
+      <div class="ticker-track" id="tickerTrack"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="pagehero wrap">
+    <div class="breadcrumb"><a href="index.html">首页</a><span class="sep">/</span>武器数据库</div>
+    <h1 class="page-title">武器数据库</h1>
+    <p class="page-sub">T0-T2梯度榜为社区综合参考，会随版本调整实时更新；下方附热门改枪码，进游戏后可直接在改枪台导入。</p>
+  </section>
+
+  <section class="section wrap">
+    <div class="section-head">
+      <h2>武器梯度榜</h2>
+      <span class="idx">TIER LIST // 01</span>
+    </div>
+    <div class="tierboard">
+      <div class="tier-row" data-t="0">
+        <div class="tier-badge">T0</div>
+        <div class="tier-guns">
+          <span>AWM</span> · <span>M7</span> · <span>腾龙突击步枪</span> · <span>AS Val</span> · <span>M14射手步枪</span>
+        </div>
+      </div>
+      <div class="tier-row" data-t="1">
+        <div class="tier-badge">T1</div>
+        <div class="tier-guns">
+          <span>M250</span> · <span>K437</span> · <span>KC17</span>
+        </div>
+      </div>
+      <div class="tier-row" data-t="2">
+        <div class="tier-badge">T2</div>
+        <div class="tier-guns">
+          <span>AUG</span> · <span>G3突击步枪</span>
+        </div>
+      </div>
+    </div>
+    <div class="tier-note">* 猛攻优先T0武器，开镜快、后坐力小、伤害高；跑刀可选以小博大的低价武器降低阵亡损失。具体强度以改枪台实测手感为准。</div>
+  </section>
+
+  <section class="section wrap" style="border-bottom:none;">
+    <div class="section-head">
+      <h2>热门改枪码</h2>
+      <span class="idx">BUILD CODES // 02</span>
+      <span class="more">点击复制按钮直接使用</span>
+    </div>
+    <div class="wgrid">
+      <div class="hud-card weapon-card">
+        <div class="wmeta">T0 · 突击步枪</div>
+        <div class="wname">ASh-12 满改</div>
+        <p style="font-size:13px; color:var(--text-dim);">全配件满改方案，压枪稳、中远距离均衡，猛攻首选之一。</p>
+        <div class="code-box"><span>6FBCTB800FANC867657VO</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+      </div>
+      <div class="hud-card weapon-card">
+        <div class="wmeta">T0 · 突击步枪</div>
+        <div class="wname">ASh-12 魔改</div>
+        <p style="font-size:13px; color:var(--text-dim);">侧重射速与机动性的进攻型改法，适合近距离遭遇战。</p>
+        <div class="code-box"><span>6FBCUFC00FANC867657VO</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+      </div>
+      <div class="hud-card weapon-card">
+        <div class="wmeta">T0 · 战斗步枪</div>
+        <div class="wname">M7 战斗步枪</div>
+        <p style="font-size:13px; color:var(--text-dim);">烽火地带高热度方案，配件均衡，容错率高。</p>
+        <div class="code-box"><span>6FE2JHO00FANC867657VO</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:20px;">
+      <b>使用方法：</b>进入游戏改枪台，选择对应武器后找到"导入配置"或"分享码"入口，粘贴上方代码即可一键套用配件方案。改枪码会随版本更新失效，如导入无效请回来看是否有更新版本。
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="foot-row">
+    <span>© DELTA INTEL · 玩家自建攻略站 · 非官方</span>
+    <span>数据来源：官方公告 + 社区整理 · 每日人工校对</span>
+  </div>
+  <div class="disclaim">本站为《三角洲行动》非官方玩家攻略站，游戏名称、图片及素材版权归腾讯公司所有，仅作资料参考与非商业展示。内容如有错漏欢迎反馈，赛季/密码等时效性信息请以游戏内实际情况为准。</div>
+</footer>
+
+<script src="daily-codes.js"></script>
+<script>
+  const track = document.getElementById('tickerTrack');
+  const build = () => DAILY_CODES.map(c => `<span>${todayStr()} <b>${c.map}</b>：${c.code}</span>`).join('');
+  track.innerHTML = build() + build();
+
+  function copyCode(btn){
+    const code = btn.previousElementSibling.textContent;
+    navigator.clipboard?.writeText(code).then(()=>{
+      const old = btn.textContent;
+      btn.textContent = '已复制';
+      setTimeout(()=>{ btn.textContent = old; }, 1500);
+    });
+  }
+</script>
+
+</body>
+</html>
